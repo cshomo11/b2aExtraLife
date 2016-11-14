@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Arvo|Ubuntu:300" rel="stylesheet">
+	<link href="style/base.css" rel="stylesheet">
+</head>
+<body>
+	<div id="divStreamWrapper" class="stream-wrapper">
+		<div id="blockGame" class="video-capture-div blocked" style="display:none">
+			<svg version="1.1"width="250" height="250" viewBox="0 0 24 24">
+				<path d="M22 8v-2h-20v2h-2v10h2v2h20v-2h2v-10h-2zM12 14h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2zM16 16h-2v-2h2v2zM16 10h2v2h-2v-2zM20 16h-2v-2h2v2zM22 12h-2v-2h2v2z"></path>
+			</svg>
+		</div>
+		<div class="video-capture-div"></div><!--
+ --><div class="sidebar-div" id="divSidebar">
+			<div class="video-capture-div webcam"></div>
+			<div class="sidebar-content">
+				<donor-sidebar></donor-sidebar>
+			</div>
+		</div>
+		<div class="lower-third" id="divLowerThird">
+			<div class="lower-third-title-bg">
+				<label class="lower-title-lbl" id="lblLowerTitle">Extra Life 2016</label>
+			</div>
+			<lower-third></lower-third>
+			<div class="lower-third-donation-bg">
+				<donation-tracker></donation-tracker>
+			</div>
+		</div>
+	</div>
+	<script src="lib/zepto.min.js"></script>
+	<script src="lib/aja.min.js"></script>
+	<script src="lib/velocity.min.js"></script>
+	<script src="app/index.js"></script>
+	<link rel="import" href="app/components/donation-tracker/donation-tracker.html">
+	<link rel="import" href="app/components/sidebar/sidebar.html">
+	<link rel="import" href="app/components/lower-third/lower-third.html">
+</body>
+</html>

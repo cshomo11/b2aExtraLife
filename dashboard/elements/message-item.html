@@ -1,0 +1,59 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../components/iron-icons/iron-icons.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../components/paper-icon-button/paper-icon-button.html">
+<dom-module id="message-item">
+  <style>
+  .row{margin:15px 0; background:#f1f1f1}
+  </style>
+  <template>
+    <div class="layout horizontal row">
+      <label class="position" hidden="true" value="{{position}}"></label>
+        <span style="float:right"><paper-icon-button on-click="editMessage" icon="create" nodecg-dialog="add-new-message"></paper-icon-button><paper-icon-button icon="delete" on-click="deleteMessage" nodecg-dialog="delete-message"></paper-icon-button></span>
+      <paper-input class="title-input" label="Title" disabled="true" value="{{value.title}}"></paper-input>
+      <paper-input class="subtitle-input" label="Subtitle" disabled="true" value="{{value.subtitle}}"></paper-input>
+      <label style="margin-right:10px">Show Message</label><paper-toggle-button class="show-message" style="display:inline-block" checked="{{value.showMessage}}" disabled="true"></paper-toggle-button>
+    </div>
+  </template>
+  <script>
+    (function() {
+      Polymer({
+        is: "message-item",
+        properties: {
+          position: Number,
+          value:{
+            type: Object,
+            observer: '_valueChanged'
+          }
+        },
+        _valueChanged: function(newVal) {
+            this.setAttribute('title', newVal.title);
+            this.setAttribute('subtitle', newVal.subtitle);
+            this.setAttribute('showMessage', newVal.showMessage);
+        },
+        editMessage: function(evt){
+          var par = evt.currentTarget.parentNode.parentNode;
+          var pos = par.querySelector('.position').value;
+          var title = par.querySelector('.title-input').value;
+          var subtitle = par.querySelector('.subtitle-input').value;
+          var showMessage = par.querySelector('.show-message').checked;
+          var mesData = {
+            "position": pos,
+            "title": title,
+            "subtitle": subtitle,
+            "showMessage": showMessage
+          };
+
+          nodecg.sendMessage("messageEditData", mesData);
+        },
+        deleteMessage: function(evt){
+          var par = evt.currentTarget.parentNode.parentNode;
+          var pos = par.querySelector('.position').value;
+          nodecg.sendMessage("messageDeleteData", pos);
+        }
+      });
+    })();
+  </script>
+</dom-module>

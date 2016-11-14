@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-checkbox/paper-checkbox.html">
+    <link rel="import" href="components/nodecg-toast/nodecg-toast.html">
+    <style>
+      paper-toast.block{--paper-toast-background-color: #e53935}
+      paper-toast.unblock{--paper-toast-background-color: #4CAF50}
+      paper-button.block, paper-button.color{background:#4CAF50; color:#fff}
+    </style>
+</head>
+<body>
+  <nodecg-toast id="toast"></nodecg-toast>
+  <div class="layout horizontal" style="margin: 30px 0;">
+      <paper-button id="block" class="flex block" data-blocked="false">Block Game View</paper-button>
+  </div>
+  <div class="layout horizontal" style="margin: 30px 0;">
+    <paper-button id="toggleColor" class="flex color" data-color-mode="light">Night View</paper-button>
+  </div>
+  <div class="layout horizontal" style="margin: 30px 0;">
+    <label for="showDonors" style="margin-right:5px">Show Donor List</label><paper-checkbox id="showDonors" class="flex donors" checked="true"></paper-button>
+  </div>
+  <script>
+  var blockRep = nodecg.Replicant('blockGame');
+  var colorRep = nodecg.Replicant('colorMode');
+  var showDonorsRep = nodecg.Replicant('showDonors');
+  var toast = document.getElementById('toast');
+  var block = document.getElementById('block');
+  var toggleColor = document.getElementById('toggleColor');
+  var showDonors = document.getElementById('showDonors');
+
+  block.addEventListener('click', function() {
+      if(block.dataset.blocked === "false"){
+        //Block Game View
+        blockRep.value = true;
+        block.dataset.blocked = "true";
+        block.innerHTML = "Unblock Game View";
+        toast.className = "block";
+        toast.text = 'Game view is blocked';
+        toast.show();
+        return;
+      }
+      else{
+        blockRep.value = false;
+        block.dataset.blocked = "false";
+        block.innerHTML = "Block Game View";
+        toast.className = "unblock";
+        toast.text = 'Game view is clear';
+        toast.show();
+      }
+  });
+
+  toggleColor.addEventListener('click', function() {
+      if(toggleColor.dataset.colorMode === "light"){
+        //Block Game View
+        colorRep.value = "dark";
+        toggleColor.dataset.colorMode = "dark";
+        toggleColor.innerHTML = "Day View";
+        toast.text = 'Night View Enabled';
+        toast.show();
+        return;
+      }
+      else{
+        colorRep.value = "light";
+        toggleColor.dataset.colorMode = "light";
+        toggleColor.innerHTML = "Night View";
+        toast.text = 'Day View Enabled';
+        toast.show();
+      }
+  });
+
+  showDonors.addEventListener('change', function(){
+    if (!showDonors.checked){
+      toast.text = 'Donor List Hidden';
+      showDonorsRep.value = "hide";
+    }
+    else{
+      toast.text = 'Donor List Visible';
+      showDonorsRep.value = "show";
+    }
+    toast.show();
+  });
+
+  nodecg.listenFor("manualEditTotal", function(){
+    totalLbl.innerHTML = totalRep.value.raw;
+    console.log('Donations successfully updated');
+    toast.text = 'Successfully updated donations.';
+    toast.show();
+  });
+  </script>
+</body>
+</html>

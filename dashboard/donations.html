@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/nodecg-toast/nodecg-toast.html">
+    <style>
+      #edit{margin-left:5px}
+      paper-button.update{background:#4CAF50; color:#fff}
+    </style>
+</head>
+<body>
+  <nodecg-toast id="toast"></nodecg-toast>
+  <h2 id="lblTotal">?</h2>
+  <div class="layout horizontal" style="margin-bottom: 50px;">
+      <paper-button id="update" class="flex update">Force Update</paper-button>
+      <paper-button id="edit" class="nodecg-configure" nodecg-dialog="edit-donations">Edit...</paper-button>
+  </div>
+  <h4>Donor List</h4>
+  <div class="layout horizontal" style="margin-bottom: 8px;">
+    <paper-button id="updateList" class="flex update">Force List Update</paper-button>
+  </div>
+  <script>
+  var totalRep = nodecg.Replicant('totalRep');
+  var goalRep = nodecg.Replicant('goalRep');
+  var toast = document.getElementById('toast');
+  var update = document.getElementById('update');
+  var updateList = document.getElementById('updateList');
+  var totalLbl = document.getElementById('lblTotal');
+
+  totalRep.on('change', function(newVal, oldVal) {
+    totalLbl.innerHTML = newVal.formatted;
+  });
+  update.addEventListener('click', function() {
+      update.setAttribute('disabled', 'true');
+      nodecg.sendMessage('updateTotal', "update", function (result) {
+          update.removeAttribute('disabled');
+          if (!result) {
+              toast.text = 'Error updating total. Check console.';
+              toast.show();
+              return;
+          }
+          else {
+              toast.text = 'Successfully updated donations.';
+              toast.show();
+          }
+      });
+  });
+
+  updateList.addEventListener('click', function(){
+    updateList.setAttribute('disabled', 'true');
+    nodecg.sendMessage('updateDonors', "update", function (result) {
+        updateList.removeAttribute('disabled');
+        if (!result) {
+            toast.text = 'Error updating donor list. Check console.';
+            toast.show();
+            return;
+        }
+        else {
+            toast.text = 'Successfully updated donation list.';
+            toast.show();
+        }
+    });
+  });
+
+  nodecg.listenFor("manualEditTotal", function(){
+    totalLbl.innerHTML = totalRep.value.raw;
+    console.log('Donations successfully updated');
+    toast.text = 'Successfully updated donations.';
+    toast.show();
+  });
+  </script>
+</body>
+</html>

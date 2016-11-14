@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../components/paper-button/paper-button.html">
+    <link rel="import" href="../components/paper-input/paper-input.html">
+</head>
+<body>
+    <paper-input id="input" label="Donation Total" type="number">0</paper-input>
+    <script>
+      (function(){
+        var input = document.getElementById('input');
+        var totalRep = nodecg.Replicant("totalRep");
+        input.value = totalRep.value.raw;
+        document.addEventListener('dialog-confirmed', function() {
+            nodecg.sendMessage('manualEditTotal', parseFloat(input.value));
+        });
+      })();
+    </script>
+</body>
+</html>

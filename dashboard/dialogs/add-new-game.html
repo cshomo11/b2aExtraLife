@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="../components/paper-button/paper-button.html">
+    <link rel="import" href="../components/paper-input/paper-input.html">
+</head>
+<body>
+    <label id="position" hidden="true" value=""></label>
+    <paper-input id="newGame" label="Title"></paper-input>
+    <paper-input id="newDev" label="Developer"></paper-input>
+    <paper-input id="newPub" label="Publisher"></paper-input>
+    <script>
+      (function(){
+        nodecg.listenFor("gameEditData", function(game){
+          var position = document.getElementById("position");
+          var newGame = document.getElementById("newGame");
+          var newDev = document.getElementById("newDev");
+          var newPub = document.getElementById("newPub");
+          position.value = game.position;
+          newGame.value = game.title;
+          newDev.value = game.developer;
+          newPub.value = game.publisher;
+        });
+        document.addEventListener('dialog-confirmed', function() {
+          var newGame = document.getElementById("newGame");
+          var newDev = document.getElementById("newDev");
+          var newPub = document.getElementById("newPub");
+          var game = {};
+          game.title = newGame.value;
+          game.developer = newDev.value;
+          game.publisher = newPub.value;
+          game.isActive = false;
+          game.isNext = false;
+          if (position.value !== undefined && position.value !== ""){
+            game.position = position.value;
+            nodecg.sendMessage("editExistingGame", game, function(result){
+              newGame.value = "";
+              newDev.value = "";
+              newPub.value = "";
+            });
+          }
+          else{
+            nodecg.sendMessage("addNewGame", game, function(result){
+              newGame.value = "";
+              newDev.value = "";
+              newPub.value = "";
+            });
+          }
+        });
+        document.addEventListener('dialog-dismissed', function() {
+          var newGame = document.getElementById("newGame");
+          var newDev = document.getElementById("newDev");
+          var newPub = document.getElementById("newPub");
+          newGame.value = "";
+          newDev.value = "";
+          newPub.value = "";
+        });
+      })();
+    </script>
+</body>
+</html>

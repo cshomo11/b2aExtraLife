@@ -1,0 +1,19 @@
+<link rel="import" href="../../../components/polymer/polymer.html">
+<dom-module id="lower-third">
+  <style>
+    .lower-third-bar{display:inline-block; width:67%; height:100%; vertical-align: top; position: relative; left:-65px; overflow:hidden;z-index:1}
+    .title-wrapper{display:inline-block; height:100%;vertical-align: top;margin-left:25px}
+    .headline-title{display:block; font:normal 40px/60px 'Ubuntu', sans-serif; margin-left: 25px}
+    .headline-subtitle{display:block; font:normal 22px/48px 'Ubuntu', sans-serif}
+  </style>
+  <template>
+    <div class="lower-third-bar" id="divLowerThirdBar">
+      <div class="title-wrapper" id="divLowerTitleWrapper">
+        <label class="headline-title">[[title]]</label>
+        <label class="headline-subtitle">[[subtitle]]</label>
+      </div>
+    </div>
+  </template>
+</dom-module>
+
+<script src="lower-third.js"></script>

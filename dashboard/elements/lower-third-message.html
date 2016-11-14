@@ -1,0 +1,50 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="message-item.html">
+<link rel="import" href="game-item.html">
+
+<dom-module id="lower-third-message">
+  <style>
+    paper-button.new{background:#1565C0; color:#fff; margin-right:5px}
+    paper-button.active{background:#FF8F00; color:#fff; margin-right:5px}
+    paper-button.next{background:#AD1457; color:#fff}
+  </style>
+  <template>
+    <div class="layout horizontal">
+      <h3>Messages</h3>
+      <template is="dom-repeat" items="{{messages}}">
+          <message-item position="{{index}}" value="{{item}}"></message-item>
+      </template>
+      <div class="row" style="margin-bottom:45px">
+        <paper-button id="addNewMessage" class="flex new" nodecg-dialog="add-new-message">Add New</paper-button>
+      </div>
+    </div>
+    <div class="layout horizontal">
+      <h3>Game List</h3>
+      <template is="dom-repeat" items="{{games}}">
+          <game-item position="{{index}}" value="{{item}}"></message-item>
+      </template>
+      <div class="row" style="margin-bottom:30px">
+        <paper-button id="addNewMessage" class="flex new" nodecg-dialog="add-new-game">Add New</paper-button>
+        <paper-button id="changeActiveGame" class="flex active" nodecg-dialog="select-active-game">Change Active Game</paper-button>
+        <paper-button id="changeNextGame" class="flex next" nodecg-dialog="select-next-game">Change Next Game</paper-button>
+      </div>
+    </div>
+  </template>
+  <script>
+    (function() {
+      Polymer({
+        is: "lower-third-message",
+        properties: {
+          messages: Array,
+          games: Array
+        },
+        ready: function(){
+        }
+      });
+    })();
+  </script>
+</dom-module>

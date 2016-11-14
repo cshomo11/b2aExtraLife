@@ -1,0 +1,181 @@
+{
+  "name": "b2aExtraLife",
+  "version": "1.0.0",
+  "description": "My first Extra Life 2016 overlay with donation counter, lower third messages, and a donor list.",
+  "author": {
+    "name": "cshomo11",
+    "url": "https://github.com/cshomo11"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "NodeCG",
+    "Extra Life",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.8.0",
+    "dashboardPanels": [
+      {
+        "name": "donations",
+        "title": "Donations",
+        "width": 3,
+        "file": "donations.html",
+        "headerColor": "#283593"
+      },
+      {
+        "name": "edit-donations",
+        "title": "Edit Donations",
+        "width": 3,
+        "file": "dialogs/edit-donations.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "save",
+            "type": "confirm"
+          },
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "block-game-view",
+        "title": "Overlay Options",
+        "width": 3,
+        "file": "block-game-view.html",
+        "headerColor": "#D81B60"
+      },
+      {
+        "name": "lower-third",
+        "title": "Lower Third",
+        "width": 4,
+        "file": "lower-third.html",
+        "headerColor": "#7B1FA2"
+      },
+      {
+        "name": "add-new-message",
+        "title": "Add New Message",
+        "width": 4,
+        "file": "dialogs/add-new-message.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "save",
+            "type": "confirm"
+          },
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "add-new-game",
+        "title": "Add New Game",
+        "width": 4,
+        "file": "dialogs/add-new-game.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "save",
+            "type": "confirm"
+          },
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "select-active-game",
+        "title": "Select Active Game",
+        "width": 4,
+        "file": "dialogs/select-active-game.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "OK",
+            "type": "confirm"
+          },
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "select-next-game",
+        "title": "Select Next Game",
+        "width": 4,
+        "file": "dialogs/select-next-game.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "OK",
+            "type": "confirm"
+          },
+          {
+            "name": "cancel",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "delete-message",
+        "title": "Delete Message",
+        "width": 3,
+        "file": "dialogs/delete-message.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "yes",
+            "type": "confirm"
+          },
+          {
+            "name": "no",
+            "type": "dismiss"
+          }
+        ]
+      },
+      {
+        "name": "delete-game",
+        "title": "Delete Game",
+        "width": 3,
+        "file": "dialogs/delete-game.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "yes",
+            "type": "confirm"
+          },
+          {
+            "name": "no",
+            "type": "dismiss"
+          }
+        ]
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1280,
+        "height": 720,
+        "singleInstance": true
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aja": "^0.4.1",
+    "numeral": "^1.5.3",
+    "request": "^2.74.0",
+    "request-promise": "^4.0.2"
+  }
+}

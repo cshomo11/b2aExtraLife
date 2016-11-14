@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="../components/paper-listbox/paper-listbox.html">
+    <link rel="import" href="../components/paper-item/paper-item.html">
+</head>
+<style>
+</style>
+<body>
+    <paper-listbox id="gameList" class="dropdown-content" attr-for-selected="value">
+    </paper-listbox>
+    <script>
+      var lwrtrd = nodecg.Replicant("lowerThird");
+      var activeGame = nodecg.Replicant("activeIndex");
+      lwrtrd.on("change", function(newVal, oldVal){
+        var games = newVal.games;
+        var gamelist = Polymer.dom(this.root).querySelector('#gameList');
+        Polymer.dom(gamelist).innerHTML = "";
+        for (var i = 0; i < games.length; i++){
+          var item = document.createElement("paper-item");
+          item.value = i;
+          item.innerHTML = games[i].title;
+          if (games[i].isActive){Polymer.dom(gamelist).setAttribute("selected", i)};
+          Polymer.dom(gamelist).appendChild(item);
+        }
+      });
+      document.addEventListener('dialog-confirmed', function() {
+        var i = Polymer.dom(this.root).querySelector('#gameList').selected;
+        activeGame.value = i;
+      });
+    </script>
+</body>
+</html>

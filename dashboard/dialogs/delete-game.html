@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+</head>
+<body>
+    <label id="position" hidden="true" value=""></label>
+    <label>Are you sure you want want to delete this game?</label>
+    <script>
+      (function(){
+        nodecg.listenFor("gameDeleteData", function(pos){
+          document.getElementById("position").value = pos;
+        });
+        document.addEventListener('dialog-confirmed', function() {
+          var position = document.getElementById("position").value;
+          if (position.value !== ""){
+            nodecg.sendMessage("deleteGame", position, function(result){
+              position.value = "";
+            });
+          }
+        });
+        document.addEventListener('dialog-dismissed', function() {
+          document.getElementById("position").value = "";
+        });
+      })();
+    </script>
+</body>
+</html>

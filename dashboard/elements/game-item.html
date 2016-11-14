@@ -1,0 +1,70 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../components/iron-icons/iron-icons.html">
+<link rel="import" href="../components/paper-input/paper-input.html">
+<link rel="import" href="../components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../components/paper-checkbox/paper-checkbox.html">
+<dom-module id="game-item">
+  <style>
+  .row{margin:15px 0; background:#f1f1f1}
+  .toggle-group{display:flex; flex-direction: row; margin:10px 0; background:#f1f1f1}
+  .left-row{flex:0 0; flex-grow: 1}
+  .right-row{flex:0 1; flex-grow: 1}
+  paper-toggle-button{display:inline-block}
+  label{margin-right:10px}
+  </style>
+  <template>
+    <div class="layout horizontal row">
+      <label class="position" hidden="true" value="{{position}}"></label>
+        <span style="float:right"><paper-icon-button icon="create" on-click="editGame" nodecg-dialog="add-new-game"></paper-icon-button><paper-icon-button icon="delete" on-click="deleteGame" nodecg-dialog="delete-game"></paper-icon-button></span>
+      <paper-input class="title-input" label="Title" disabled="true" value="{{value.title}}"></paper-input>
+      <paper-input class="dev-input" label="Developer" disabled="true" value="{{value.developer}}"></paper-input>
+      <paper-input class="pub-input" label="Publisher" disabled="true" value="{{value.publisher}}"></paper-input>
+      <div class="toggle-group">
+        <div class="left-row"><label>Is Active</label><paper-checkbox class="active-check" checked="{{value.isActive}}" disabled="true"></paper-checkbox></div>
+        <div class="right-row"><label>Is Next</label><paper-checkbox class="next-check" checked="{{value.isNext}}" disabled="true"></paper-checkbox></div>
+      </div>
+    </div>
+  </template>
+  <script>
+    (function() {
+      Polymer({
+        is: "game-item",
+        properties: {
+          position: Number,
+          value:{
+            type: Object,
+            observer: '_valueChanged'
+          }
+        },
+        _valueChanged: function(newVal) {
+            this.setAttribute('title', newVal.title);
+            this.setAttribute('developer', newVal.developer);
+            this.setAttribute('publisher', newVal.publisher);
+            this.setAttribute('isActive', newVal.isActive);
+            this.setAttribute('isNext', newVal.isNext);
+        },
+        editGame: function(evt){
+          var par = evt.currentTarget.parentNode.parentNode;
+          var pos = par.querySelector('.position').value;
+          var title = par.querySelector('.title-input').value;
+          var developer = par.querySelector('.dev-input').value;
+          var publisher = par.querySelector('.pub-input').value;
+          var gameData = {
+            "position": pos,
+            "title": title,
+            "developer": developer,
+            "publisher": publisher
+          };
+
+          nodecg.sendMessage("gameEditData", gameData);
+        },
+        deleteGame: function(evt){
+          var par = evt.currentTarget.parentNode.parentNode;
+          var pos = par.querySelector('.position').value;
+          nodecg.sendMessage("gameDeleteData", pos);
+        }
+      });
+    })();
+  </script>
+</dom-module>

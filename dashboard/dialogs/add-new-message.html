@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="../components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="../components/paper-button/paper-button.html">
+    <link rel="import" href="../components/paper-input/paper-input.html">
+    <link rel="import" href="../components/paper-toggle-button/paper-toggle-button.html">
+</head>
+<style>
+  .row{display:block; margin:15px 0}
+</style>
+<body>
+    <label id="position" hidden="true" value=""></label>
+    <paper-input id="newTitle" label="Title"></paper-input>
+    <paper-input id="newSubtitle" label="Subtitle"></paper-input>
+    <div class="row">
+      <label for="newShow">Show Message</label><paper-toggle-button style="display:inline-block; margin-left:10px" id="newShow" checked="{{mes.showMessage}}"></paper-toggle-button>
+    </div>
+    <script>
+      (function(){
+        nodecg.listenFor("messageEditData", function(message){
+          var position = document.getElementById("position");
+          var newTitle = document.getElementById("newTitle");
+          var newSubTitle = document.getElementById("newSubtitle");
+          var newShow = document.getElementById("newShow");
+          position.value = message.position;
+          newTitle.value = message.title;
+          newSubTitle.value = message.subtitle;
+          newShow.checked = message.showMessage;
+        });
+
+        document.addEventListener('dialog-confirmed', function() {
+          var position = document.getElementById("position");
+          var newTitle = document.getElementById("newTitle");
+          var newSubTitle = document.getElementById("newSubtitle");
+          var newShow = document.getElementById("newShow");
+          var message = {};
+          message.title = newTitle.value;
+          message.subtitle = newSubTitle.value;
+          message.showMessage = newShow.checked;
+          if (position.value !== undefined && position.value !== ""){
+            message.position = position.value;
+            nodecg.sendMessage("editExistingMessage", message, function(result){
+              newTitle.value = "";
+              newSubTitle.value = "";
+              newShow.checked = false;
+              position.value = "";
+            });
+          }
+          else {
+            nodecg.sendMessage("addNewMessage", message, function(result){
+              newTitle.value = "";
+              newSubTitle.value = "";
+              newShow.checked = false;
+            });
+          }
+        });
+        document.addEventListener('dialog-dismissed', function() {
+          var newTitle = document.getElementById("newTitle");
+          var newSubTitle = document.getElementById("newSubtitle");
+          var newShow = document.getElementById("newShow");
+          newTitle.value = "";
+          newSubTitle.value = "";
+          newShow.checked = false;
+        });
+      })();
+    </script>
+</body>
+</html>

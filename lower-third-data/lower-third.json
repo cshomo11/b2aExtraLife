@@ -1,0 +1,25 @@
+{
+   "messages": [
+      {
+         "title": "Extra Life Overlay",
+         "subtitle": "Now Open Sourced For Everyone's Enjoyment!",
+         "showMessage": true
+      }
+   ],
+   "games": [
+      {
+         "title": "Rocket League",
+         "developer": "Psyonix",
+         "publisher": "Psyonix",
+         "isActive": true,
+         "isNext": false
+      },
+      {
+         "title": "Hitman",
+         "developer": "IO Interactive",
+         "publisher": "Square Enix",
+         "isActive": false,
+         "isNext": true
+      }
+   ]
+}
