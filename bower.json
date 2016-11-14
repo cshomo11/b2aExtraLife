@@ -1,9 +1,9 @@
 {
-  "name": "cs-extra-life",
-  "version": "0.1.1",
-  "homepage": "none",
+  "name": "b2aExtraLife",
+  "version": "1.0.0",
+  "homepage": "https://github.com/cshomo11",
   "authors": [
-    "Chris S."
+    "cshomo11"
   ],
   "description": "A NodeCG bundle for Extra Life 2016",
   "dependencies": {
