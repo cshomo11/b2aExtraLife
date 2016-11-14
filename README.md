@@ -1,10 +1,13 @@
+#Back to Analog's Extra Life 2016 NodeCG Bundle
+[View the stream archive here](https://youtu.be/NyqZVYSCT9A?t=2h12m5s)
 The Back to Analog Extra Life Overlay is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `~0.8.0`
 You will need to have an appropriate version of NodeCG installed to use it.
 
 ##NOTES:
 1. The stream uses Google Fonts so you will either need to have an internet connection (you probably have that already if you are streaming) or you will need to download the offline fonts and update the CSS in graphics/index.html.
-2. I tried to make this as lightweight as I could for my first attempt to maintain 60fps. That said, it usually runs best when you aren't running any other resource-heavy applications.
+2. I tried to make this as lightweight as I could for my first attempt to maintain 720p 60fps. That said, it usually runs best when you aren't running any other resource-heavy applications.
+3. Please feel free to make any changes you see fit to the layout itself. You can easily adjust the fixed heights and widths to make this work for a 1080p stream as well.
 
 ##USAGE:
 * You must have [NodeCG](http://nodecg.com/) installed for this bundle to run. It is also helpful to install [nodecg-cli](https://github.com/nodecg/nodecg-cli)
