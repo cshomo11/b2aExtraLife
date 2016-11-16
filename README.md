@@ -25,6 +25,7 @@ The full license is included in the project folder.
 
 ##Credits:
 This NodeCG bundle uses the following open-source libraries
+
 1. [Velocity.js](http://velocityjs.org/) - © 2014 Julian Shapiro - MIT License
 2. [Zepto.js](http://zeptojs.com/) - © 2010-2016 Thomas Fuchs - MIT License
 3. [RequireJS](http://requirejs.org/) - © jQuery Foundation and other contributors, https://jquery.org/ - MIT License
