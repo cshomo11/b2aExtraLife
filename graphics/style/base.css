@@ -1,6 +1,6 @@
 .stream-wrapper{display:block; width:1280px; height:720px; position: absolute; top:0; left:0; overflow:hidden}
 .video-capture-div{position:relative; top:0;left:0;display:block;height:612px;width:1088px; background:transparent; box-shadow: inset 0 4px 8px 0 rgba(20, 20, 20, 0.4);}
-.video-capture-div.blocked{position:absolute;opacity:0;transform: translate-x(-100%); z-index:10; background: #1fe9e7;
+.video-capture-div.blocked{position:absolute;opacity:0;transform: translateX(-100%); z-index:10; background: #1fe9e7;
       background: -webkit-radial-gradient(center, ellipse cover,  #1fe9e7 0%,#15d1d0 47%,#12b2b1 100%);
       background: radial-gradient(ellipse at center,  #1fe9e7 0%,#15d1d0 47%,#12b2b1 100%); box-shadow:none}
 .video-capture-div.blocked > svg{display:block; margin: 181px auto 0; fill:#13c2c1}
