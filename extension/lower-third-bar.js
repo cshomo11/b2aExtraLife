@@ -72,7 +72,6 @@ module.exports = function(nodecg) {
             return mess.showMessage;
         });
         setTimeout(function(){
-          //nodecg.log.debug("Loop " + itr);
           titleRep.value = messagesList[itr].title;
           subtitleRep.value = messagesList[itr].subtitle;
           itr++;
