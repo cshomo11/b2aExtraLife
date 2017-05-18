@@ -23,7 +23,7 @@ You will need to have an appropriate version of NodeCG installed to use it.
 
 1. Clone the folder into your NodeCG's 'bundles' folder.
 2. Open command line and navigate to the newly cloned 'b2aExtraLife' directory. Run 'npm install' and 'bower install' to ensure all dependencies have been properly installed.
-3. In extension -> donations.js and extension -> donor-sidebar.js, you will need to replace `const parID = 'INSERT participantID HERE'` with your Extra Life Participant ID. You can find this ID in your Extra Life profile page's URL.
+3. In `extension -> donations.js` and `extension -> donor-sidebar.js`, you will need to replace `const parID = 'INSERT participantID HERE'` with your Extra Life Participant ID. You can find this ID in your Extra Life profile page's URL.
 4. Navigate command line back to the 'nodecg' directory and if nodecg-cli is installed, run 'nodecg start'. Otherwise run 'node index.js'
 
 ## License:
