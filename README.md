@@ -19,7 +19,7 @@ You will need to have an appropriate version of NodeCG installed to use it.
 4. Please feel free to make any changes you see fit to the layout itself. You can easily adjust the fixed heights and widths to make this work for a 1080p stream as well.
 
 ## Usage:
-* You must have [NodeCG](http://nodecg.com/) installed for this bundle to run. It is also helpful to install [nodecg-cli](https://github.com/nodecg/nodecg-cli)
+* You must have [NodeCG](http://nodecg.com/) installed for this bundle to run. It is also helpful to install [nodecg-cli](https://github.com/nodecg/nodecg-cli) but it's not required.
 
 1. Clone the folder into your NodeCG's 'bundles' folder.
 2. Open command line and navigate to the newly cloned 'b2aExtraLife' directory. Run 'npm install' and 'bower install' to ensure all dependencies have been properly installed.
@@ -35,4 +35,5 @@ This NodeCG bundle uses the following open-source libraries
 
 1. [Velocity.js](http://velocityjs.org/) - © 2014 Julian Shapiro - MIT License
 2. [Zepto.js](http://zeptojs.com/) - © 2010-2016 Thomas Fuchs - MIT License
-3. [RequireJS](http://requirejs.org/) - © jQuery Foundation and other contributors, https://jquery.org/ - MIT License
+3. [Numeral.js](http://numeraljs.com/) - © 2012 Adam Draper - MIT License
+4. [Request-Promise](https://github.com/request/request-promise) - ISC License
