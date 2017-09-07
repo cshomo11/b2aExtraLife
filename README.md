@@ -2,8 +2,14 @@
 
 [View the stream archive here](https://youtu.be/NyqZVYSCT9A?t=2h12m5s)
 
+#### Like the bundle?
+If you appreciate this project, please feel free to [donate to my Extra Life campaign.](https://tinyurl.com/AnalogExtraLife)
+
+### Updated for NodeCG 0.9+
+
+## About:
 The Back to Analog Extra Life Overlay is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
-It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `~0.8.0`
+It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `~0.9.0`
 You will need to have an appropriate version of NodeCG installed to use it.
 
 ## Features:
@@ -19,15 +25,15 @@ You will need to have an appropriate version of NodeCG installed to use it.
 4. Please feel free to make any changes you see fit to the layout itself. You can easily adjust the fixed heights and widths to make this work for a 1080p stream as well.
 
 ## Usage:
-* You must have [NodeCG](http://nodecg.com/) installed for this bundle to run. It is also helpful to install [nodecg-cli](https://github.com/nodecg/nodecg-cli) but it's not required.
+* You must have [NodeCG](http://nodecg.com/) installed for this bundle to run. It is also helpful to install [nodecg-cli](https://github.com/nodecg/nodecg-cli) but it's not required. Don't forget to run `npm install` and `bower install` on the NodeCG project.
 
 1. Clone the folder into your NodeCG's 'bundles' folder.
-2. Open command line and navigate to the newly cloned 'b2aExtraLife' directory. Run 'npm install' and 'bower install' to ensure all dependencies have been properly installed.
+2. Open command line and navigate to the newly cloned 'b2aExtraLife' directory. Run `npm install` and `bower install` to ensure all dependencies have been properly installed.
 3. In `extension -> donations.js` and `extension -> donor-sidebar.js`, you will need to replace `const parID = 'INSERT participantID HERE'` with your Extra Life Participant ID. You can find this ID in your Extra Life profile page's URL.
 4. Navigate command line back to the 'nodecg' directory and if nodecg-cli is installed, run 'nodecg start'. Otherwise run 'node index.js'
 
 ## License:
-Use is granted under the MIT license. I only ask as a courtesy to include a link back to this github project on whatever streaming platform you choose.
+Use is granted under the MIT license. I only ask as a courtesy to include a link back to this Github project on whatever streaming platform you choose.
 The full license is included in the project folder.
 
 ## Credits:

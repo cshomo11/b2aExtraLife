@@ -1,5 +1,4 @@
 /*global requirejs */
-(function() {
   Polymer({
         is: 'donation-tracker',
         properties: {
@@ -33,4 +32,3 @@
           });
         }
   });
-})();

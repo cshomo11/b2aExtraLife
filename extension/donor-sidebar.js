@@ -7,10 +7,10 @@ var rp = require('request-promise');
 var filter = require('profanity-filter');
 var Q = require('q');
 const util = require('util');
-const parID = 'INSERT participantID HERE'
+const parID = 'place participantID here';
 
-var el_url =  'http://www.extra-life.org/index.cfm?fuseaction=donordrive.participantDonations&participantID=' + parID + '&format=json';
-var POLL_INTERVAL = 5 * 60000; //Get new donation info every 5 minutes
+var el_url =  'https://www.extra-life.org/index.cfm?fuseaction=donordrive.participantDonations&participantID=' + parID + '&format=json';
+var POLL_INTERVAL = 15 * 60000; //Get new donation info every 15 minutes
 var updateInterval;
 
 module.exports = function(nodecg) {
@@ -29,12 +29,12 @@ module.exports = function(nodecg) {
     rp(options)
         .then(function (response) {
           var el_data = response;
-          nodecg.log.debug(util.inspect(el_data, {showHidden: false, depth: 2}));
+        // nodecg.log.debug(util.inspect(el_data, {showHidden: false, depth: 2}));
           //Format the donations to $0.00
           for (var j = 0; j < el_data.length; j++) {
             var rawData = el_data[j].donationAmount;
-            if(el_data[j].donorName == null){
-              el_data[j].donorName = "Anonymous"
+            if (el_data[j].donorName == null) {
+              el_data[j].donorName = "Anonymous";
             }
             else{
               el_data[j].donorName = filter.clean(el_data[j].donorName);
