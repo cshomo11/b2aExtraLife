@@ -1,11 +1,9 @@
-# Back to Analog's Extra Life 2016 NodeCG Bundle
+# Back to Analog's Extra Life NodeCG v0.9 Bundle
 
 [View the stream archive here](https://youtu.be/NyqZVYSCT9A?t=2h12m5s)
 
 #### Like the bundle?
 If you appreciate this project, please feel free to [donate to my Extra Life campaign.](https://tinyurl.com/AnalogExtraLife)
-
-### Updated for NodeCG 0.9+
 
 ## About:
 The Back to Analog Extra Life Overlay is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
