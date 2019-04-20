@@ -24,13 +24,13 @@
     <label for="showDonors" style="margin-right:5px">Show Donor List</label><paper-checkbox id="showDonors" class="flex donors" checked="true"></paper-button>
   </div>
   <script>
-  var blockRep = nodecg.Replicant('blockGame');
-  var colorRep = nodecg.Replicant('colorMode');
-  var showDonorsRep = nodecg.Replicant('showDonors');
-  var toast = document.getElementById('toast');
-  var block = document.getElementById('block');
-  var toggleColor = document.getElementById('toggleColor');
-  var showDonors = document.getElementById('showDonors');
+  let blockRep = nodecg.Replicant('blockGame');
+  let colorRep = nodecg.Replicant('colorMode');
+  let showDonorsRep = nodecg.Replicant('showDonors');
+  let toast = document.getElementById('toast');
+  let block = document.getElementById('block');
+  let toggleColor = document.getElementById('toggleColor');
+  let showDonors = document.getElementById('showDonors');
 
   block.addEventListener('click', function() {
       if(block.dataset.blocked === "false"){

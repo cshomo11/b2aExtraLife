@@ -22,12 +22,12 @@
     <paper-button id="updateList" class="flex update">Force List Update</paper-button>
   </div>
   <script>
-  var totalRep = nodecg.Replicant('totalRep');
-  var goalRep = nodecg.Replicant('goalRep');
-  var toast = document.getElementById('toast');
-  var update = document.getElementById('update');
-  var updateList = document.getElementById('updateList');
-  var totalLbl = document.getElementById('lblTotal');
+  let totalRep = nodecg.Replicant('totalRep');
+  let goalRep = nodecg.Replicant('goalRep');
+  let toast = document.getElementById('toast');
+  let update = document.getElementById('update');
+  let updateList = document.getElementById('updateList');
+  let totalLbl = document.getElementById('lblTotal');
 
   totalRep.on('change', function(newVal, oldVal) {
     totalLbl.innerHTML = newVal.formatted;

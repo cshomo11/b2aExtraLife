@@ -1,9 +1,9 @@
 (function() {
   'use strict'
-  var toastLT = document.getElementById('lowerThirdToast');
-  var messageCtrl = document.getElementById('messageCtrl');
-  var updateLT = document.getElementById('updateLT');
-  var list = nodecg.Replicant('lowerThird');
+  let toastLT = document.getElementById('lowerThirdToast');
+  let messageCtrl = document.getElementById('messageCtrl');
+  let updateLT = document.getElementById('updateLT');
+  let list = nodecg.Replicant('lowerThird');
 
   list.on("change", function(newValue, oldValue){
     messageCtrl.messages = newValue.messages;
