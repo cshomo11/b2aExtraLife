@@ -1,23 +1,23 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = function(nodecg) {
-  var titleRep = nodecg.Replicant('titleRep');
-  var subtitleRep = nodecg.Replicant('subtitleRep');
-  var list = nodecg.Replicant('lowerThird');
-  var activeGame = nodecg.Replicant('activeIndex');
-  var nextGame = nodecg.Replicant('nextIndex');
-  var LOCAL_DATA = path.resolve(__dirname, "../lower-third-data");
+  let titleRep = nodecg.Replicant('titleRep');
+  let subtitleRep = nodecg.Replicant('subtitleRep');
+  let list = nodecg.Replicant('lowerThird');
+  let activeGame = nodecg.Replicant('activeIndex');
+  let nextGame = nodecg.Replicant('nextIndex');
+  let LOCAL_DATA = path.resolve(__dirname, "../lower-third-data");
   list.value = JSON.parse(fs.readFileSync((LOCAL_DATA + "/lower-third.json"), 'utf8'));
 
   //Start the lower third loop
-  var itr = 0;
-  var actGame = list.value.games.filter(function(game) {
+  let itr = 0;
+  let actGame = list.value.games.filter(function(game) {
       return game.isActive;
   });
-  var nxtGame = list.value.games.filter(function(game) {
+  let nxtGame = list.value.games.filter(function(game) {
       return game.isNext;
   });
   if (actGame.length > 0){
