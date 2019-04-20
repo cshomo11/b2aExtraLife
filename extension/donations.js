@@ -1,15 +1,12 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
 var numeral = require('numeral');
 var rp = require('request-promise');
 var Q = require('q');
-const util = require('util');
 const parID = 'place participantID here';
 
 var EL_URL = 'https://www.extra-life.org/index.cfm?fuseaction=donordrive.participant&participantID=' + parID + '&format=json'; //Add participantID here
-var POLL_INTERVAL = 15 * 60000; //Get new donation info every 15 minutes
+var POLL_INTERVAL = 5 * 60000; //Get new donation info every 5 minutes
 var updateInterval;
 
 module.exports = function(nodecg) {

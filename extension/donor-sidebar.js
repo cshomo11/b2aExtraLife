@@ -1,16 +1,12 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var numeral = require('numeral');
 var rp = require('request-promise');
 var filter = require('profanity-filter');
 var Q = require('q');
-const util = require('util');
 const parID = 'place participantID here';
 
 var el_url =  'https://www.extra-life.org/index.cfm?fuseaction=donordrive.participantDonations&participantID=' + parID + '&format=json';
-var POLL_INTERVAL = 15 * 60000; //Get new donation info every 15 minutes
+var POLL_INTERVAL = 5 * 60000; //Get new donation info every 5 minutes
 var updateInterval;
 
 module.exports = function(nodecg) {
@@ -31,18 +27,12 @@ module.exports = function(nodecg) {
           var el_data = response;
         // nodecg.log.debug(util.inspect(el_data, {showHidden: false, depth: 2}));
           //Format the donations to $0.00
-          for (var j = 0; j < el_data.length; j++) {
-            var rawData = el_data[j].donationAmount;
-            if (el_data[j].donorName == null) {
-              el_data[j].donorName = "Anonymous";
+          el_data.map(x => {
+            return {
+              donorName: (x.donorName === null) ? "Anonymous" : filter.clean(x.donorName),
+              donationAmount: x.donationAmount
             }
-            else{
-              el_data[j].donorName = filter.clean(el_data[j].donorName);
-            }
-
-            //el_data[j].donationAmount = numeral(rawData).format('$0.00');
-          }
-
+          });
           if (el_data.length > 10){
             donorsRep.value = el_data.slice([0,9]);
           }

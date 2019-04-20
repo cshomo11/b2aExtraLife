@@ -2,8 +2,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var numeral = require('numeral');
-const util = require('util');
 
 module.exports = function(nodecg) {
   var titleRep = nodecg.Replicant('titleRep');
